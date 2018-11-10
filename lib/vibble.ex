@@ -1,9 +1,26 @@
 defmodule Vibble do
-  @moduledoc """
-  Vibble keeps the contexts that define your domain
-  and business logic.
+  alias Vibble.{PurchaseCount, Repo}
+  import Ecto.Query
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  def increase_tally(rfid, item) do
+    count = count(rfid, item)
+    case count do
+      nil ->
+        PurchaseCount.changeset(%PurchaseCount{}, %{rfid: rfid, item_id: item, count: 1})
+        |> Repo.insert()
+        1
+      _ ->
+        PurchaseCount.changeset(count, %{count: count.count + 1})
+        |> Repo.update()
+        count.count + 1
+    end
+  end
+
+  def get(rfid, item) do
+    count(rfid, item) || 0
+  end
+
+  defp count(rfid, item) do
+    Repo.one(from purchaseCount in PurchaseCount, where: purchaseCount.rfid == ^rfid)
+  end
 end

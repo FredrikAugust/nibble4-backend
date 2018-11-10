@@ -16,8 +16,7 @@ defmodule VibbleWeb.Router do
   scope "/api", VibbleWeb do
     pipe_through :api
 
-    scope "/v1" do
-
-    end
+    get "/", APIController, :index
+    post "/", APIController, :update
   end
 end

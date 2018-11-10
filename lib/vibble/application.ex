@@ -11,7 +11,7 @@ defmodule Vibble.Application do
       # Start the Ecto repository
       Vibble.Repo,
       # Start the endpoint when the application starts
-      VibbleWeb.Endpoint
+      VibbleWeb.Endpoint,
       # Starts a worker by calling: Vibble.Worker.start_link(arg)
       # {Vibble.Worker, arg},
     ]
