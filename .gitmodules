@@ -1,0 +1,3 @@
+[submodule "priv/frontend"]
+	path = priv/frontend
+	url = git@github.com:fredrikaugust/nibble4
