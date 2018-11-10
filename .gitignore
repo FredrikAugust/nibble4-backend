@@ -43,3 +43,6 @@ npm-debug.log
 
 # ctags
 tags
+
+# language server
+.elixir_ls
