@@ -6,7 +6,7 @@ defmodule Vibble.PurchaseCount do
   schema "purchase_counts" do
     field :count, :integer
     field :item_id, :integer
-    field :rfid, :string
+    field :pk, :integer
 
     timestamps()
   end
@@ -14,7 +14,7 @@ defmodule Vibble.PurchaseCount do
   @doc false
   def changeset(purchase_count, attrs) do
     purchase_count
-    |> cast(attrs, [:rfid, :item_id, :count])
-    |> validate_required([:rfid, :item_id, :count])
+    |> cast(attrs, [:pk, :item_id, :count])
+    |> validate_required([:pk, :item_id, :count])
   end
 end

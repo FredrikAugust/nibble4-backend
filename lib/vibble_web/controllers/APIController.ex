@@ -1,11 +1,11 @@
 defmodule VibbleWeb.APIController do
   use Phoenix.Controller
 
-  def index(conn, %{"rfid" => rfid, "item" => item}) do
-    json(conn, %{item: item, count: Vibble.get(rfid, item)})
+  def index(conn, %{"pk" => pk, "item" => item}) do
+    json(conn, %{item: item, count: Vibble.get(pk, item)})
   end
 
-  def update(conn, %{rfid: rfid, item: item}) do
-    json(conn, %{item: item, count: Vibble.increase_tally(rfid, item)})
+  def update(conn, %{"pk" => pk, "item" => item, "count" => count}) do
+    json(conn, %{item: item, count: Vibble.increase_tally(pk, item, count)})
   end
 end

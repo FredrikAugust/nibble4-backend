@@ -3,7 +3,7 @@ defmodule Vibble.Repo.Migrations.CreatePurchaseCounts do
 
   def change do
     create table(:purchase_counts) do
-      add :rfid, :string
+      add :pk, :integer
       add :item_id, :integer
       add :count, :integer
 
