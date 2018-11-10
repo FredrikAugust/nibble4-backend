@@ -20,7 +20,11 @@ defmodule Vibble do
     count(rfid, item) || 0
   end
 
+  def rfid_all(rfid) do
+    Repo.all(from purchaseCount in PurchaseCount, where: purchaseCount.rfid == ^rfid)
+  end
+
   defp count(rfid, item) do
-    Repo.one(from purchaseCount in PurchaseCount, where: purchaseCount.rfid == ^rfid)
+    Repo.one(from purchaseCount in PurchaseCount, where: purchaseCount.rfid == ^rfid and purchaseCount.item == ^item)
   end
 end
