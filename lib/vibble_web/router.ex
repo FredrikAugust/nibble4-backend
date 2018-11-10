@@ -13,14 +13,11 @@ defmodule VibbleWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", VibbleWeb do
-    pipe_through :browser
+  scope "/api", VibbleWeb do
+    pipe_through :api
 
-    get "/", PageController, :index
+    scope "/v1" do
+
+    end
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", VibbleWeb do
-  #   pipe_through :api
-  # end
 end
